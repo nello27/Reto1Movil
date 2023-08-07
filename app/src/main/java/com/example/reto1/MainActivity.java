@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.widget.GridView;
 
 import com.example.reto1.Adapters.SneakerAdapter;
+import com.example.reto1.Fragments.FavoritosFragment;
 import com.example.reto1.Fragments.ProductosFragment;
 import com.example.reto1.Fragments.ServiciosFragment;
 import com.example.reto1.Fragments.SucursalesFragment;
@@ -112,8 +113,14 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.serviciosid:
                         // Acción para la opción 2
-                        Fragment serviciosFragment = new SucursalesFragment();
+                        Fragment serviciosFragment = new ServiciosFragment();
                         getSupportFragmentManager().beginTransaction().replace(R.id.fragment, serviciosFragment).addToBackStack(null).commit();
+
+                        break;
+                    case R.id.favoritosid:
+                        // Acción para la opción 2
+                        Fragment favoritosFragment = new FavoritosFragment();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, favoritosFragment).addToBackStack(null).commit();
 
                         break;
                 }

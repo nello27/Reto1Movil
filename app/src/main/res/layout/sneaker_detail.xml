@@ -49,4 +49,31 @@
         android:layout_gravity="bottom|center"
         android:text="@string/btnvolver"
         app:icon="@drawable/flecha" />
+
+    <Button
+        android:id="@+id/btnFavoritos"
+        android:layout_width="198dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:text="Agregar a favoritos"
+        app:icon="@android:drawable/btn_star" />
+
+    <TextView
+        android:id="@+id/sneakerid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
+    <Button
+        android:id="@+id/btnCargarFav"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center"
+        android:text="Cargar Favoritos" />
+
+    <ListView
+        android:id="@+id/listFav"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
 </LinearLayout>

@@ -10,6 +10,9 @@
         <item
             android:id="@+id/serviciosid"
             android:title="Servicios"/>
+        <item
+            android:id="@+id/favoritosid"
+            android:title="Favoritos"/>
         <!-- Agrega más elementos de menú según tus necesidades -->
     </group>
 </menu>
