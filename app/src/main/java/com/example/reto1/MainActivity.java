@@ -139,9 +139,15 @@ public class MainActivity extends AppCompatActivity {
 
         inflater.inflate(R.menu.options_menu, menu);
 
-        return true;
+        return false;
     }
 
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        // Limpiar el menú para ocultar sus elementos
+        menu.clear();
+        return super.onPrepareOptionsMenu(menu);
+    }
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 

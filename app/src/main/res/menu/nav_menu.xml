@@ -3,16 +3,20 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/productosid"
-            android:title="Productos"/>
+            android:icon="@drawable/image1"
+            android:title="Productos" />
         <item
             android:id="@+id/sucursalesid"
-            android:title="Sucursales"/>
+            android:icon="@android:drawable/ic_dialog_map"
+            android:title="Sucursales" />
         <item
             android:id="@+id/serviciosid"
-            android:title="Servicios"/>
+            android:icon="?android:attr/actionModeFindDrawable"
+            android:title="Servicios" />
         <item
             android:id="@+id/favoritosid"
-            android:title="Favoritos"/>
+            android:icon="@android:drawable/btn_star_big_on"
+            android:title="Favoritos" />
         <!-- Agrega más elementos de menú según tus necesidades -->
     </group>
 </menu>
