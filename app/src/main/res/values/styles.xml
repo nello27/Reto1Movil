@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Otros estilos -->
+
+    <!-- Estilo personalizado para el texto del menú en la barra de acción -->
+    <style name="ToolbarMenuItemText" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">#FF0000</item> <!-- Cambia el color aquí -->
+    </style>
+</resources>
+

@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
         android:id="@+id/menuOptionProductos"
-        android:title="Productos" />
+        android:title="Productos"
+        android:background="@color/AzulApp"
+        />
+
     <item
         android:id="@+id/menuOptionServicios"
-        android:title="Servicios" />
+        android:title="Servicios"
+        android:background="@color/AzulApp"
+        />
     <item
         android:id="@+id/menuOptionSucursales"
-        android:title="Sucursales" />
+        android:title="Sucursales"
+        android:background="@color/AzulApp"/>
 </menu>
