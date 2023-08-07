@@ -153,8 +153,9 @@ public class SneakerDetailActivity extends AppCompatActivity {
 
                 // ...
 
-                Cursor cursor = bd.rawQuery("SELECT sneakertitle, sneakerDescription, sneakerimg FROM favoritos", null);
+                Cursor cursor = bd.rawQuery("SELECT sneakerId, sneakertitle, sneakerDescription, sneakerimg FROM favoritos", null);
 
+                int indiceColumnaId = cursor.getColumnIndex("sneakerId");
                 int indiceColumnaTitulo = cursor.getColumnIndex("sneakertitle");
                 int indiceColumnaDescripcion = cursor.getColumnIndex("sneakerDescription");
                 int indiceColumnaImg = cursor.getColumnIndex("sneakerimg");
@@ -164,13 +165,14 @@ public class SneakerDetailActivity extends AppCompatActivity {
 
                 // Recorrer el cursor para obtener los datos
                 while (cursor.moveToNext()) {
+                    String Id = cursor.getString(indiceColumnaId);
                     String titulo = cursor.getString(indiceColumnaTitulo);
                     String descripcion = cursor.getString(indiceColumnaDescripcion);
                     byte[] imgBytes = cursor.getBlob(indiceColumnaImg);
 
                     Bitmap bitmap = BitmapFactory.decodeByteArray(imgBytes, 0, imgBytes.length);
-
-                    SneakersLista articulo = new SneakersLista(titulo, descripcion, imgBytes);
+                    int idValue = Integer.parseInt(Id);
+                    SneakersLista articulo = new SneakersLista(idValue,titulo,descripcion,descripcion,imgBytes);
                     listaSneakers.add(articulo);
                 }
 

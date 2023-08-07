@@ -8,18 +8,15 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridView;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.reto1.Adapters.SneakerAdapter;
 import com.example.reto1.Adapters.SneakerAdapterFav;
 import com.example.reto1.AdminBD;
 import com.example.reto1.R;
-import com.example.reto1.SneakerDetailActivity;
 import com.example.reto1.SneakersLista;
 
 import java.util.ArrayList;
@@ -60,9 +57,10 @@ public class FavoritosFragment extends Fragment {
         SQLiteDatabase bd = admin.getReadableDatabase();
 
         // Consultar la base de datos y obtener el cursor
-        Cursor cursor = bd.rawQuery("SELECT sneakertitle, sneakerDescription, sneakerimg FROM favoritos", null);
+        Cursor cursor = bd.rawQuery("SELECT sneakerId,sneakertitle, sneakerDescription, sneakerimg FROM favoritos", null);
 
         // Obtener los índices de las columnas del cursor
+        int indiceColumnaId = cursor.getColumnIndex("sneakerId");
         int indiceColumnaTitulo = cursor.getColumnIndex("sneakertitle");
         int indiceColumnaDescripcion = cursor.getColumnIndex("sneakerDescription");
         int indiceColumnaImg = cursor.getColumnIndex("sneakerimg");
@@ -72,13 +70,14 @@ public class FavoritosFragment extends Fragment {
 
         // Recorrer el cursor para obtener los datos y llenar la lista
         while (cursor.moveToNext()) {
+            String Id = cursor.getString(indiceColumnaId);
             String titulo = cursor.getString(indiceColumnaTitulo);
             String descripcion = cursor.getString(indiceColumnaDescripcion);
             byte[] imgBytes = cursor.getBlob(indiceColumnaImg);
 
             Bitmap bitmap = BitmapFactory.decodeByteArray(imgBytes, 0, imgBytes.length);
-
-            SneakersLista articulo = new SneakersLista(titulo, descripcion, imgBytes);
+            int idValue = Integer.parseInt(Id);
+            SneakersLista articulo = new SneakersLista(idValue,titulo, descripcion,descripcion,imgBytes);
             listaSneak.add(articulo);
         }
 

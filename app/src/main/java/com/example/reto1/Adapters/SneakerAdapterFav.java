@@ -17,6 +17,8 @@ import com.example.reto1.R;
 import com.example.reto1.SneakerDetailActivity;
 import com.example.reto1.SneakersLista;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 public class SneakerAdapterFav extends BaseAdapter {
@@ -55,6 +57,8 @@ public class SneakerAdapterFav extends BaseAdapter {
             convertView = LayoutInflater.from(context).inflate(R.layout.list_item_layout, parent, false);
         }
 
+
+
         TextView textView = convertView.findViewById(R.id.titleTextView);
         TextView textView2 = convertView.findViewById(R.id.descriptionTextView);// Cambia "R.id.text1" al ID correcto de tu TextView
         ImageView imageView = convertView.findViewById(R.id.imageView); // Asegúrate de usar el ID correcto para la ImageView
@@ -75,28 +79,19 @@ public class SneakerAdapterFav extends BaseAdapter {
         btnAccion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                borrar();
+
+                // crear administrador y la instancia de la bd
+                AdminBD admin = new AdminBD(context, "administracion", null,1);
+                SQLiteDatabase bd = admin.getReadableDatabase();//bd es para leer la tabla
+                Integer dato = sneaker.getID();
+                bd.delete("favoritos", "sneakerId=" + dato, null);
+                Toast.makeText(context, "Se ha quitado de favoritos "+dato, Toast.LENGTH_SHORT).show();
+
+                    bd.close();
                  }
         });
 
         return convertView;
-    }
-
-    public void borrar(){
-
-
-        // Obtener una referencia al TextView dentro de la vista rootView
-        TextView textView = rootView.findViewById(R.id.titleTextView);
-
-        // crear administrador y la instancia de la bd
-        /*AdminBD admin = new AdminBD(context, "administracion", null,1);
-        SQLiteDatabase bd = admin.getReadableDatabase();//bd es para leer la tabla
-        bd.delete("favoritos", "sneakertitle=" + textView, null);
-        Toast.makeText(context, "Ha sido borrado de favoritos ", Toast.LENGTH_SHORT).show();
-
-        bd.close();*/
-        //restablecer las cajas de texto
-
     }
 
 }
