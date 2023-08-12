@@ -20,7 +20,16 @@
     <TextView
         android:id="@+id/lorem_ipsum_sucursales"
         android:layout_width="wrap_content"
-        android:layout_height="619dp"
-        android:layout_gravity="bottom|center"
+        android:layout_height="262dp"
+        android:layout_gravity="top"
+        android:paddingTop="60dp"
         android:text="@string/lorem_ipsum" />
+
+    <FrameLayout
+        android:id="@+id/mapContainer"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_gravity="bottom" />
+
+
 </FrameLayout>
