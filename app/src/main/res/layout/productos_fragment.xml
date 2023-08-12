@@ -3,6 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!-- Capa blanca detrás del contenido principal -->
+    <View
+        android:id="@+id/white_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
+        android:visibility="gone" />
+
     <GridView
         android:id="@+id/grilla"
         android:layout_width="match_parent"

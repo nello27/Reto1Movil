@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.example.reto1.Adapters.SneakerAdapter;
 import com.example.reto1.Model.Sneaker;
@@ -56,14 +57,28 @@ public class ProductosFragment extends Fragment {
                 Sneaker item = (Sneaker) parent.getItemAtPosition(position);
 
                 // pasar datos entre actividades INTENT
-                Intent intent = new Intent(getContext(), SneakerDetailActivity.class);
+                /*Intent intent = new Intent(getContext(), SneakerDetailActivity.class);
                 intent.putExtra("sneaker_id", item.getId());
                 intent.putExtra("sneaker_img", item.getIdDrawable());
                 intent.putExtra("sneaker_name", item.getName());
                 intent.putExtra("sneaker_description", item.getDescription());
-                startActivity(intent);
+                startActivity(intent);*/
 
                 //Toast.makeText(getContext(), "Se selecciono "+item.getName(), Toast.LENGTH_SHORT).show();
+
+                int sneakerId = item.getId();
+                int sneakerImg = item.getIdDrawable();
+                String sneakerName = item.getName();
+                String sneakerDescription = item.getDescription();
+
+                DetalleFragment detalleFragment = DetalleFragment.newInstance(sneakerId, sneakerImg, sneakerName, sneakerDescription);
+
+                // Reemplazar el contenido del fragmento principal con el detalle del sneaker
+                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.fragment, detalleFragment)
+                        .addToBackStack(null)
+                        .commit();
             }
         });
 

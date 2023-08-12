@@ -1,2 +1,65 @@
-package com.example.reto1.Fragments;public class DetalleFragment {
+package com.example.reto1.Fragments;
+
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
+import com.example.reto1.R;
+
+public class DetalleFragment extends Fragment {
+
+    private static final String ARG_SNEAKER_ID = "sneaker_id";
+    private static final String ARG_SNEAKER_IMG = "sneaker_img";
+    private static final String ARG_SNEAKER_NAME = "sneaker_name";
+    private static final String ARG_SNEAKER_DESCRIPTION = "sneaker_description";
+
+
+    public static DetalleFragment newInstance(int sneakerId, int sneakerImg, String sneakerName, String sneakerDescription) {
+
+        DetalleFragment fragment = new DetalleFragment();
+        Bundle args = new Bundle();
+        args.putInt(ARG_SNEAKER_ID, sneakerId);
+        args.putInt(ARG_SNEAKER_IMG, sneakerImg);
+        args.putString(ARG_SNEAKER_NAME, sneakerName);
+        args.putString(ARG_SNEAKER_DESCRIPTION, sneakerDescription);
+        fragment.setArguments(args);
+        return fragment;
+
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        //return inflater.inflate(R.layout.sneaker_detail, container, false);\
+        View rootView = inflater.inflate(R.layout.sneaker_detail, container, false);
+
+        ImageView sneakerImgView = rootView.findViewById(R.id.sneakerdetailimage);
+        TextView sneakerNameView = rootView.findViewById(R.id.sneakerTitle);
+        TextView sneakerDescriptionView = rootView.findViewById(R.id.sneakerDescription);
+
+        Bundle args = getArguments();
+        if (args != null) {
+            int sneakerImg = args.getInt(ARG_SNEAKER_IMG);
+            String sneakerName = args.getString(ARG_SNEAKER_NAME);
+            String sneakerDescription = args.getString(ARG_SNEAKER_DESCRIPTION);
+
+            sneakerImgView.setImageResource(sneakerImg);
+            sneakerNameView.setText(sneakerName);
+            sneakerDescriptionView.setText(sneakerDescription);
+        }
+
+        return rootView;
+    }
 }
