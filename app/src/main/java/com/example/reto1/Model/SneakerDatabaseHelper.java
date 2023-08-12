@@ -11,8 +11,8 @@ public class SneakerDatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "sneaker_database";
     private static final int DATABASE_VERSION = 1;
 
-    private static final String TABLE_SNEAKERS = "sneakers";
-    private static final String COLUMN_ID = "id";
+    public static final String TABLE_SNEAKERS = "sneakers";
+    public static final String COLUMN_ID = "id";
     private static final String COLUMN_IMAGE = "image";
     private static final String COLUMN_NAME = "name";
     private static final String COLUMN_DESCRIPTION = "description";

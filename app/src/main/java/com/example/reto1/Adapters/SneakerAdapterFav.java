@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.reto1.AdminBD;
+import com.example.reto1.Model.SneakerDatabaseHelper;
 import com.example.reto1.R;
 import com.example.reto1.SneakerDetailActivity;
 import com.example.reto1.SneakersLista;
@@ -76,20 +77,26 @@ public class SneakerAdapterFav extends BaseAdapter {
         }
 
         // Configurar la acción del botón
+        // Configurar la acción del botón
         btnAccion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                // crear administrador y la instancia de la bd
-                AdminBD admin = new AdminBD(context, "administracion", null,1);
-                SQLiteDatabase bd = admin.getReadableDatabase();//bd es para leer la tabla
-                Integer dato = sneaker.getID();
-                bd.delete("favoritos", "sneakerId=" + dato, null);
-                Toast.makeText(context, "Se ha quitado de favoritos "+dato, Toast.LENGTH_SHORT).show();
+                // Crear administrador y la instancia de la base de datos
+                AdminBD admin = new AdminBD(context, "sneaker_database", null, 1);
+                SQLiteDatabase bd = admin.getReadableDatabase();
 
-                    bd.close();
-                 }
+                // Obtener el ID del sneaker
+                Integer dato = sneaker.getID();
+
+                // Utilizar las constantes definidas en SneakerDatabaseHelper para las tablas y columnas
+                bd.delete(SneakerDatabaseHelper.TABLE_SNEAKERS, SneakerDatabaseHelper.COLUMN_ID + "=" + dato, null);
+                Toast.makeText(context, "Se ha quitado de favoritos " + dato, Toast.LENGTH_SHORT).show();
+
+                bd.close();
+            }
         });
+
 
         return convertView;
     }

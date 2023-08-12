@@ -71,11 +71,6 @@ public class DetalleFragment extends Fragment {
             sneakerTextId.setText(sneakerId);
         }
 
-        // Agregar el manejo de clics del botón
-// ...
-
-// Agregar el manejo de clics del botón
-        // Agregar el manejo de clics del botón
 // Agregar el manejo de clics del botón
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,8 +95,6 @@ public class DetalleFragment extends Fragment {
                 }
             }
         });
-
-
 
         return rootView;
 
