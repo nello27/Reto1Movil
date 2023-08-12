@@ -5,6 +5,10 @@
     <string name="sucursales">Sucursales</string>
     <string name="servicios">Servicios</string>
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
+    <string name="sede_suba">Sede Suba en la Cra. 149a #142b-93 a 142b-1, Bogotá / Horarios Lunes a Viernes 8:00 am a 8:30pm /Sabados, Domingos y Festivos 12:00pm a 9:00pm</string>
+    <string name="sede_Chapinero">Sede Chapinero en la Cra. 103 #20c-47 a 20c-1, Bogotá, Bogotá / Horarios Lunes a Viernes 9:00 am a 8:00pm /Sabados, Domingos y Festivos 11:00pm a 7:00pm</string>
+
+    <string name="sede_Fontibon">Sede Fontibon en la Cra. 103 #20c-47 a 20c-1, Bogotá / Horarios Lunes a Viernes 8:00 am a 9:00pm /Sabados, Domingos y Festivos 1:00pm a 8:00pm</string>
     <string name="btncomprar">Comprar</string>
     <string name="btnvolver">Volver</string>
 </resources>

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -51,8 +52,39 @@ public class SucursalesFragment extends Fragment implements OnMapReadyCallback {
                     .commit();
             mapFragment.getMapAsync(this);
         }
+
+        Button buttonSedeSuba = view.findViewById(R.id.buttonSedeSuba);
+        Button buttonSedeChapinero = view.findViewById(R.id.buttonSedeChapinero);
+        Button buttonSedeFontibon = view.findViewById(R.id.buttonSedeFontibon);
+
+        buttonSedeSuba.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                moveCameraToLocation(4.750340, -74.119895, "Sede Suba");
+            }
+        });
+
+        buttonSedeChapinero.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                moveCameraToLocation(4.650493669603073, -74.06133722556912, "Sede Chapinero");
+            }
+        });
+
+        buttonSedeFontibon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                moveCameraToLocation(4.677054, -74.142900, "Sede Fontibon");
+            }
+        });
     }
 
+    private void moveCameraToLocation(double latitude, double longitude, String title) {
+        LatLng location = new LatLng(latitude, longitude);
+        float zoomLevel = 15f;
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, zoomLevel));
+        mMap.addMarker(new MarkerOptions().position(location).title(title));
+    }
 
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {

@@ -7,6 +7,9 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -16,12 +19,22 @@ import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 
 import com.example.reto1.Adapters.SneakerAdapterFav;
+import com.example.reto1.Fragments.FavoritosFragment;
+import com.example.reto1.Fragments.ProductosFragment;
+import com.example.reto1.Fragments.ServiciosFragment;
+import com.example.reto1.Fragments.SucursalesFragment;
 import com.example.reto1.Model.Sneaker;
+import com.google.android.material.navigation.NavigationView;
 
 import org.w3c.dom.Text;
 
@@ -49,10 +62,15 @@ public class SneakerDetailActivity extends AppCompatActivity {
 
     public List<SneakersLista> listaSneakers = new ArrayList<>();
 
-
+    private DrawerLayout drawerLayout;
+    private ActionBarDrawerToggle actionBarDrawerToggle;
+    private NavigationView navigationView;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.sneaker_detail);
+
+
 
         getSupportActionBar().setIcon(R.drawable.logo);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -190,60 +208,69 @@ public class SneakerDetailActivity extends AppCompatActivity {
             }
         });
 
+        //DRAWER LAYOUT
+
+        drawerLayout = findViewById(R.id.s);
+        actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(actionBarDrawerToggle);
 
 
+        actionBarDrawerToggle.syncState();
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        // Inicializa el NavigationView
+        navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                // Maneja los eventos de los elementos del menú aquí
+                switch (item.getItemId()) {
+                    case R.id.productosid:
+                        // Acción para la opción 1
+                        Fragment productosFagments = new ProductosFragment();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.s, productosFagments).addToBackStack(null).commit();
+                        break;
+                    case R.id.sucursalesid:
+                        // Acción para la opción 2
+                        Fragment sucursalesFragment = new SucursalesFragment();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.s, sucursalesFragment).addToBackStack(null).commit();
+                        break;
+                    case R.id.serviciosid:
+                        // Acción para la opción 2
+                        Fragment serviciosFragment = new ServiciosFragment();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.s, serviciosFragment).addToBackStack(null).commit();
+                        break;
+                    case R.id.favoritosid:
+                        // Acción para la opción 2
+                        Fragment favoritosFragment = new FavoritosFragment();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.s, favoritosFragment).addToBackStack(null).commit();
+                        break;
+                }
+                drawerLayout.closeDrawers();
+                return true;
+            }
+        });
 
     }
 
-    /*public class Sneakerlist {
-        private String descripcion;
-        private String titulo;
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //return super.onCreateOptionsMenu(menu);
 
-        private byte[] imagen;  // Agrega este campo para la imagen en formato BLOB
+        MenuInflater inflater = getMenuInflater();
 
+        inflater.inflate(R.menu.nav_menu, menu);
 
-        public Sneakerlist(String descripcion, String titulo, byte[] img) {
-            this.descripcion = descripcion;
-            this.titulo = titulo;
-            this.imagen = img;
+        return false;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
+            return true;
         }
+        return super.onOptionsItemSelected(item);
+    }
 
 
-
-
-        // Métodos getter y setter para la descripción y el precio
-
-
-        public byte[] getImagen() {
-
-            return imagen;
-        }
-
-        public void setImagen(byte[] imagen) {
-            this.imagen = imagen;
-        }
-
-        public String getDescripcion() {
-            return descripcion;
-        }
-
-        public void setDescripcion(String descripcion) {
-            this.descripcion = descripcion;
-        }
-
-
-        public String getTitulo() {
-            return titulo;
-        }
-
-        public void setTitulo(String titulo) {
-            this.titulo = titulo;
-        }
-
-        @Override
-        public String toString() {
-            return  titulo + " " + descripcion;
-        }
-    }*/
 }

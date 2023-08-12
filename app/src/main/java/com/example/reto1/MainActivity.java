@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         try {
-            Thread.sleep(1000);
+            Thread.sleep(SPLASH_DELAY);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
