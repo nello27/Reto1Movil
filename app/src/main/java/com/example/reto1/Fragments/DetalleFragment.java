@@ -1,17 +1,24 @@
 package com.example.reto1.Fragments;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.reto1.Model.SneakerDatabaseHelper;
 import com.example.reto1.R;
+
+import java.io.ByteArrayOutputStream;
 
 public class DetalleFragment extends Fragment {
 
@@ -44,22 +51,59 @@ public class DetalleFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         //return inflater.inflate(R.layout.sneaker_detail, container, false);\
         View rootView = inflater.inflate(R.layout.sneaker_detail, container, false);
-
+        TextView sneakerTextId = rootView.findViewById(R.id.sneakerid);
         ImageView sneakerImgView = rootView.findViewById(R.id.sneakerdetailimage);
         TextView sneakerNameView = rootView.findViewById(R.id.sneakerTitle);
         TextView sneakerDescriptionView = rootView.findViewById(R.id.sneakerDescription);
+        Button saveButton = rootView.findViewById(R.id.btnFavoritos); // Agregar el botón
+
 
         Bundle args = getArguments();
         if (args != null) {
             int sneakerImg = args.getInt(ARG_SNEAKER_IMG);
             String sneakerName = args.getString(ARG_SNEAKER_NAME);
             String sneakerDescription = args.getString(ARG_SNEAKER_DESCRIPTION);
+            String sneakerId = args.getString(ARG_SNEAKER_ID);
 
             sneakerImgView.setImageResource(sneakerImg);
             sneakerNameView.setText(sneakerName);
             sneakerDescriptionView.setText(sneakerDescription);
+            sneakerTextId.setText(sneakerId);
         }
 
+        // Agregar el manejo de clics del botón
+// ...
+
+// Agregar el manejo de clics del botón
+        // Agregar el manejo de clics del botón
+// Agregar el manejo de clics del botón
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SneakerDatabaseHelper databaseHelper = new SneakerDatabaseHelper(getContext());
+
+                if (args != null) {
+                    int sneakerImgResource = args.getInt(ARG_SNEAKER_IMG); // Obtener el recurso de imagen (int)
+                    String sneakerName = args.getString(ARG_SNEAKER_NAME);
+                    String sneakerDescription = args.getString(ARG_SNEAKER_DESCRIPTION);
+
+                    // Convertir el recurso de imagen a un arreglo de bytes
+                    Bitmap bitmap = BitmapFactory.decodeResource(getResources(), sneakerImgResource);
+                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                    bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                    byte[] sneakerImgBytes = stream.toByteArray();
+
+                    // Insertar en la base de datos
+                    long rowId = databaseHelper.insertSneaker(sneakerImgBytes, sneakerName, sneakerDescription);
+
+                    Toast.makeText(getContext(), "hecho guardado", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+
+
         return rootView;
+
     }
 }

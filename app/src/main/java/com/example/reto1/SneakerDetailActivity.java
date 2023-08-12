@@ -210,7 +210,7 @@ public class SneakerDetailActivity extends AppCompatActivity {
 
         //DRAWER LAYOUT
 
-        /*drawerLayout = findViewById(R.id.s);
+        drawerLayout = findViewById(R.id.s);
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
 
@@ -229,7 +229,6 @@ public class SneakerDetailActivity extends AppCompatActivity {
                         // Acción para la opción 1
                         Fragment productosFagments = new ProductosFragment();
                         getSupportFragmentManager().beginTransaction().replace(R.id.s, productosFagments).addToBackStack(null).commit();
-                        //setContentView(R.layout.activity_main);
                         break;
                     case R.id.sucursalesid:
                         // Acción para la opción 2
@@ -250,11 +249,11 @@ public class SneakerDetailActivity extends AppCompatActivity {
                 drawerLayout.closeDrawers();
                 return true;
             }
-        });*/
+        });
 
     }
 
-    /*@Override
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         //return super.onCreateOptionsMenu(menu);
 
@@ -271,7 +270,7 @@ public class SneakerDetailActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }*/
+    }
 
 
 }
