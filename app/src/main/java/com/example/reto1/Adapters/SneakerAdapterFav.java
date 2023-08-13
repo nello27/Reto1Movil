@@ -105,6 +105,7 @@ public class SneakerAdapterFav extends BaseAdapter {
                 // Actualizar la lista de favoritos
                 listaSneakers.remove(position); // Remover el elemento de la lista en la posición actual
                 notifyDataSetChanged(); // Notificar al adaptador que los datos han cambiado y debe refrescar la vista
+
             }
         });
 

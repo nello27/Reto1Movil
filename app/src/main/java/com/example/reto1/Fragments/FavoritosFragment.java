@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -78,12 +79,29 @@ public class FavoritosFragment extends Fragment {
             listaSneak.add(articulo);
         }
         // Crear el adaptador y pasar la lista de elementos
+        //SneakerAdapterFav adapter = new SneakerAdapterFav(requireContext(), listaSneak);
+
+        // Asignar el adaptador al ListView
+        //listView.setAdapter(adapter);
+
+        // Cerrar el cursor (la base de datos se cierra automáticamente en getAllSneakers())
+        cursor.close();
+
+        // Crear el adaptador y pasar la lista de elementos
         SneakerAdapterFav adapter = new SneakerAdapterFav(requireContext(), listaSneak);
 
         // Asignar el adaptador al ListView
         listView.setAdapter(adapter);
 
-        // Cerrar el cursor (la base de datos se cierra automáticamente en getAllSneakers())
-        cursor.close();
+        // Verificar si la lista está vacía y mostrar un mensaje
+        if (listaSneak.isEmpty()) {
+            TextView emptyTextView = view.findViewById(R.id.sinfavoritos); // Agrega un TextView en tu diseño con el ID emptyTextView
+            emptyTextView.setVisibility(View.VISIBLE); // Mostrar el mensaje de "No hay favoritos"
+            listView.setVisibility(View.GONE); // Ocultar el ListView
+        } else {
+            TextView emptyTextView = view.findViewById(R.id.sinfavoritos);
+            emptyTextView.setVisibility(View.GONE);
+            listView.setVisibility(View.VISIBLE);
+        }
     }
 }

@@ -1,5 +1,7 @@
 package com.example.reto1.Fragments;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -15,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.reto1.MainActivity;
 import com.example.reto1.Model.SneakerDatabaseHelper;
 import com.example.reto1.R;
 
@@ -22,6 +25,7 @@ import java.io.ByteArrayOutputStream;
 
 public class DetalleFragment extends Fragment {
 
+    private Context context;
     private static final String ARG_SNEAKER_ID = "sneaker_id";
     private static final String ARG_SNEAKER_IMG = "sneaker_img";
     private static final String ARG_SNEAKER_NAME = "sneaker_name";
@@ -56,6 +60,8 @@ public class DetalleFragment extends Fragment {
         TextView sneakerNameView = rootView.findViewById(R.id.sneakerTitle);
         TextView sneakerDescriptionView = rootView.findViewById(R.id.sneakerDescription);
         Button saveButton = rootView.findViewById(R.id.btnFavoritos); // Agregar el botón
+        Button saveButtonVolver = rootView.findViewById(R.id.btnVolver); // Agregar el botón
+        Button saveButtonCarrito = rootView.findViewById(R.id.btnCompra); // Agregar el botón
 
 
         Bundle args = getArguments();
@@ -93,6 +99,26 @@ public class DetalleFragment extends Fragment {
 
                     Toast.makeText(getContext(), "hecho guardado", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        saveButtonVolver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Toast.makeText(getContext(), "Inicio", Toast.LENGTH_SHORT).show();
+                //Intent intent = new Intent(context, MainActivity.class); // Actividad a cargar
+                //context.startActivity(intent);
+
+                Toast.makeText(getActivity(), "Inicio", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        saveButtonCarrito.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "Carrito de compras proximamente", Toast.LENGTH_SHORT).show();
             }
         });
 
