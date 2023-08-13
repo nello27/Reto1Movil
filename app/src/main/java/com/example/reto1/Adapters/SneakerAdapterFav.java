@@ -1,6 +1,7 @@
 package com.example.reto1.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
@@ -13,6 +14,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.reto1.AdminBD;
+import com.example.reto1.Fragments.FavoritosFragment;
+import com.example.reto1.MainActivity;
 import com.example.reto1.Model.SneakerDatabaseHelper;
 import com.example.reto1.R;
 import com.example.reto1.SneakerDetailActivity;
@@ -94,6 +97,14 @@ public class SneakerAdapterFav extends BaseAdapter {
                 Toast.makeText(context, "Se ha quitado de favoritos " + dato, Toast.LENGTH_SHORT).show();
 
                 bd.close();
+
+                // Reiniciar la actividad para cargar la lista actualizada
+                //Intent intent = new Intent(context, MainActivity.class); // Cambiar "TuActividad" al nombre de tu actividad
+                //context.startActivity(intent);
+
+                // Actualizar la lista de favoritos
+                listaSneakers.remove(position); // Remover el elemento de la lista en la posición actual
+                notifyDataSetChanged(); // Notificar al adaptador que los datos han cambiado y debe refrescar la vista
             }
         });
 

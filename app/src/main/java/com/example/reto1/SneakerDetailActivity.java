@@ -159,7 +159,7 @@ public class SneakerDetailActivity extends AppCompatActivity {
         });
 
 
-        botonTraerFavoritos = (Button) findViewById(R.id.btnCargarFav);
+        //botonTraerFavoritos = (Button) findViewById(R.id.btnCargarFav);
 
         botonTraerFavoritos.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -199,10 +199,10 @@ public class SneakerDetailActivity extends AppCompatActivity {
 
 
                 // Obtener la referencia al ListView
-                ListView listView = findViewById(R.id.listFav);
+                //ListView listView = findViewById(R.id.listFav);
 
                 // Asignar el adaptador al ListView
-                listView.setAdapter(adapter);
+                //listView.setAdapter(adapter);
 
                 // ...
             }

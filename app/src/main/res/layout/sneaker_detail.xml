@@ -38,7 +38,8 @@
             android:layout_gravity="bottom"
             android:padding="15dp"
             android:text="Descripcion Sneaker"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:textColor="#000000" />
 
         <Button
             android:id="@+id/btnCompra"
@@ -47,6 +48,7 @@
             android:layout_gravity="bottom|center"
             android:text="@string/btncomprar"
             android:textAlignment="center"
+            android:textColor="#F8F6F6"
             app:icon="@drawable/carro" />
 
         <Button
@@ -55,6 +57,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center"
             android:text="@string/btnvolver"
+            android:textColor="#F8F6F6"
             app:icon="@drawable/flecha" />
 
         <Button
@@ -63,6 +66,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center"
             android:text="Agregar a favoritos"
+            android:textColor="#F8F6F6"
             app:icon="@android:drawable/btn_star" />
 
         <TextView
@@ -73,18 +77,6 @@
             android:gravity="center"
             android:text="TextView"
             android:textColor="#0B0A0A" />
-
-        <Button
-            android:id="@+id/btnCargarFav"
-            android:layout_width="190dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center"
-            android:text="Cargar Favoritos" />
-
-        <ListView
-            android:id="@+id/listFav"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
 
     </LinearLayout>
     <!-- Menú deslizante -->
