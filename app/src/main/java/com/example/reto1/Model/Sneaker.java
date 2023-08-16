@@ -10,15 +10,18 @@ public class Sneaker {
 
     private String description;
 
+    private String image;
+
     private int idDrawable;
 
 
 
-    public Sneaker(int id,String name, String description, int idDrawable){
+    public Sneaker(int id,String name,String description, int idDrawable){
 
         this.id = id;
         this.name = name;
         this.description = description;
+        this.image = image;
         this.idDrawable = idDrawable;
     }
 
